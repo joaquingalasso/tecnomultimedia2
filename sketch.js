@@ -98,9 +98,9 @@ function draw() {
       for (let i = 0; i < 41; i++) {
         push();
         rectMode(CENTER);
-        fill(colorRandom, 100, map(sin((frameCount * 0.1 + i) * 0.4), -1, 5, 0, 255));
+        fill(map(gestorPitch.filtrada, FREC_MIN, FREC_MAX, 120, 240, 0, 360), 100, map(sin((frameCount * 0.1 + i) * 0.4), -1, 5, 0, 255));
         // noStroke();
-        rect(ac * i, height/2, ac, map(gestorAmp, AMP_MIN, AMP_MAX, 20, width-20, 0, height));
+        rect(ac * i, height/2, ac, map(gestorAmp.filtrada, AMP_MIN, AMP_MAX, 0, height/4));
         pop();
       }
     }
@@ -196,11 +196,17 @@ function draw() {
       gestorPitch.dibujar(100, 300);
     }
 
-    console.log(estado);
+    printData();
     antesHabiaSonido = haySonido;
   }
 
-
+// ---- Debug ---
+  function printData(){
+    //background(255);
+    console.log(estado);
+    console.log(gestorAmp.filtrada);
+    console.log(gestorPitch.filtrada);
+    }
 
 // ---- Pitch detection ---
 function startPitch() {
