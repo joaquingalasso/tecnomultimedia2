@@ -1,3 +1,6 @@
+// Comisión de Matías - Joray (77302/9); Esteban (93509/6); Galasso (94698/3); Farías Jomñuk (86909/7).
+// Propuesta de interacción: https://youtu.be/Bb8fH30RcTk
+
 let monitorear = true;
 
 let AMP_MIN = 0.020;
