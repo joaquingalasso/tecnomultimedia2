@@ -98,7 +98,7 @@ function draw() {
       for (let i = 0; i < 41; i++) {
         push();
         rectMode(CENTER);
-        fill(map(gestorPitch.filtrada, FREC_MIN, FREC_MAX, 120, 240, 0, 360), 100, map(sin((frameCount * 0.1 + i) * 0.4), -1, 5, 0, 255));
+        fill(map(gestorAmp.filtrada, AMP_MIN, AMP_MAX, 0, height/4), 100, map(sin((frameCount * 0.1 + i) * 0.4), -1, 5, 0, 255));
         // noStroke();
         rect(ac * i, height/2, ac, map(gestorAmp.filtrada, AMP_MIN, AMP_MAX, 0, height/4));
         pop();
@@ -193,7 +193,7 @@ function draw() {
 */
     if (monitorear) {
       gestorAmp.dibujar(100, 100);
-      gestorPitch.dibujar(100, 300);
+      gestorPitch.dibujar(500, 100);
     }
 
     printData();
