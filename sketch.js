@@ -1,10 +1,10 @@
-let monitorear = false;
+let monitorear = true;
 
-let FREC_MIN = 900;
-let FREC_MAX = 1500;
+let AMP_MIN = 0.020;
+let AMP_MAX = 0.12;
 
-let AMP_MIN = 0.01;
-let AMP_MAX = 0.2;
+let FREC_MIN = 80;
+let FREC_MAX = 350;
 
 let mic;
 let pitch;
@@ -45,6 +45,8 @@ function preload() {
     });
   }
 }
+let ac;
+let colorRandom;
 
 function setup() {
   createCanvas(displayWidth, displayHeight);
@@ -62,6 +64,9 @@ function setup() {
   colorPaleta = new paleta(imagenPaleta);
 
   antesHabiaSonido = false;
+
+  ac = width / 41;
+  colorRandom = random(10, 360);
 }
 
 function draw() {
@@ -73,22 +78,31 @@ function draw() {
 
   let inicioElSonido = haySonido && !antesHabiaSonido; // evendo de INICIO de un sonido
   let finDelSonido = !haySonido && antesHabiaSonido; // evento de fIN de un sonido
-  columnas[cantidadColumnas] = new Columna();
-  columnas[1](colorPaleta, cantidadCeldas).dibujar();
-
+  //columnas[cantidadColumnas] = new Columna();
+  //columnas[1](colorPaleta, cantidadCeldas).dibujar();
 
   if (estado == "inicio") {
     if (inicioElSonido) {
-      /* for(let i=0; i<cantidadColumnas; i++){
+        /*for(let i=0; i<cantidadColumnas; i++){
         columnas[i] = new Columna();
-        columnas.dibujar();
+        columnas.dibujar();*/
+       
       }
-*/
+
     }
 
     if (haySonido) {
       //Estado
       //columnas[cantidadColumnas] = new Columna();
+      background(255);
+      for (let i = 0; i < 41; i++) {
+        push();
+        rectMode(CENTER);
+        fill(colorRandom, 100, map(sin((frameCount * 0.1 + i) * 0.4), -1, 5, 0, 255));
+        // noStroke();
+        rect(ac * i, height/2, ac, map(gestorAmp, AMP_MIN, AMP_MAX, 20, width-20, 0, height));
+        pop();
+      }
     }
 
     if (finDelSonido) {
@@ -99,9 +113,7 @@ function draw() {
       //Estado SILENCIO
       let ahora = millis();
     }
-
-    /*
-
+/*
   }else if (estado == "grosor"){
 
     if(inicioElSonido){ //Evento
@@ -178,9 +190,7 @@ function draw() {
     elColor = color(0);
     marca = millis();
   }
-
-  */
-
+*/
     if (monitorear) {
       gestorAmp.dibujar(100, 100);
       gestorPitch.dibujar(100, 300);
@@ -189,7 +199,8 @@ function draw() {
     console.log(estado);
     antesHabiaSonido = haySonido;
   }
-}
+
+
 
 // ---- Pitch detection ---
 function startPitch() {
@@ -209,3 +220,5 @@ function getPitch() {
     getPitch();
   });
 }
+
+
