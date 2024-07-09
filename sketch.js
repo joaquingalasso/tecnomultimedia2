@@ -28,6 +28,8 @@ let cantidadCeldas = 41;
 let colorPaleta;
 let imagenPaleta = [];
 
+let textura;
+
 let marca;  
 
 const model_url =
@@ -40,6 +42,8 @@ function preload() {
     "paleta/paleta_3.png",
     "paleta/paleta_4.png",
   ];
+
+  textura = loadImage('data/textura.jpg');
 
   // Carga de las imágenes de trazos figura en el array imagen_paleta_fondo
   for (let i = 0; i < urls_img.length; i++) {
