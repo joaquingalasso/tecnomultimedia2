@@ -165,11 +165,21 @@ class Celda {
   }
 }
 
+function rotulo(color, numero) {
+  push();
+  colorMode(HSB);
+  fill(color.hue, color.saturation, color.brightness);
+  //rectMode(CENTER);
+  textFont("Kurt", 16);
+  text("M.fREiRE - "+numero, 30, displayHeight -10);
+  pop();
+}
+
 function marco() {
   push();
   rectMode(CENTER);
   fill(0, 0);
-  strokeWeight(40);
+  strokeWeight(60);
   stroke(0);
   rect(displayWidth / 2, displayHeight / 2, displayWidth, displayHeight);
   pop();

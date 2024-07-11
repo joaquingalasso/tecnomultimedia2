@@ -29,6 +29,9 @@ let cantidadCeldas;
 let colorPaleta;
 let colorRandom;
 
+let colorRotulo;
+let numRotulo;
+
 let imagenesPaleta = [];
 
 let textura;
@@ -44,6 +47,8 @@ const model_url =
   "https://cdn.jsdelivr.net/gh/ml5js/ml5-data-and-models/models/pitch-detection/crepe/";
 
 function preload() {
+  loadFont('data/Kurt-Regular.otf');
+
   let urls_img = [
     "paleta/paleta_1.png",
     "paleta/paleta_2.png",
@@ -77,6 +82,9 @@ function setup() {
 
   colorMode(HSB, 360, 100, 100, 1);
   colorPaleta = new paleta(imagenesPaleta);
+
+  colorRotulo = colorPaleta.darUnColor();
+  numRotulo = int(random(1,100000));
 
   antesHabiaSonido = false;
 
@@ -113,7 +121,7 @@ function draw() {
       pop();
     }
     marco();
-
+    rotulo(colorRotulo, numRotulo);
     image(textura, 0, 0, displayWidth, displayHeight);
 
     if (inicioElSonido) {
