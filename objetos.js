@@ -168,7 +168,7 @@ class Celda {
 function rotulo(color, numero) {
   push();
   colorMode(HSB);
-  fill(color.hue, color.saturation, color.brightness);
+  fill(color.hue, color.saturation, map(gestorPitch.filtrada, 0, 1, 10, color.brightness+20));
   //rectMode(CENTER);
   textFont("Kurt", 16);
   text("M.fREiRE - "+numero, 30, displayHeight -10);

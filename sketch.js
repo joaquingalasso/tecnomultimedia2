@@ -84,7 +84,7 @@ function setup() {
   colorPaleta = new paleta(imagenesPaleta);
 
   colorRotulo = colorPaleta.darUnColor();
-  numRotulo = int(random(1,100000));
+  numRotulo = int(random(1,1000000));
 
   antesHabiaSonido = false;
 
