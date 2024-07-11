@@ -1,3 +1,3 @@
 # tecnomultimedia2
 Comisión de Matías - Esteban; Joray; Farías Jomñuk; Galasso.
-Video explicativo:
+<br> Video explicativo: https://youtu.be/YxsqxWqlNRM
