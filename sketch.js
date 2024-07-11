@@ -4,7 +4,7 @@
 let monitorear = false;
 
 let AMP_MIN = 0.02;
-let AMP_MAX = 0.05;
+let AMP_MAX = 0.06;
 
 let FREC_MIN = 20;
 let FREC_MAX = 550;
