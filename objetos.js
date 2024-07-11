@@ -171,7 +171,7 @@ function rotulo(color, numero) {
   fill(color.hue, color.saturation, map(gestorPitch.filtrada, 0, 1, 10, color.brightness+20));
   //rectMode(CENTER);
   textFont("Kurt", 16);
-  text("M.fREiRE - "+numero, 30, displayHeight -10);
+  text("M.fREIRE - "+numero, 30, displayHeight -10);
   pop();
 }
 
