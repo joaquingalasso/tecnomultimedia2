@@ -1,5 +1,3 @@
-// Comisión de Matías - Joray (77302/9); Esteban (93509/6); Galasso (94698/3); Farías Jomñuk (86909/7).
-// Video explicativo: https://youtu.be/YxsqxWqlNRM
 
 let estado = "inicio";
 
@@ -38,13 +36,13 @@ function preload() {
   fontKurt = loadFont('data/Kurt-Regular.otf');
 
   let urls_img = [
-    "paleta/paleta_1.png",
-    "paleta/paleta_2.png",
-    "paleta/paleta_3.png",
-    "paleta/paleta_4.png",
+    "paleta/paleta_1.webp",
+    "paleta/paleta_2.webp",
+    "paleta/paleta_3.webp",
+    "paleta/paleta_4.webp",
   ];
 
-  textura = loadImage("data/textura.png");
+  textura = loadImage("data/textura.webp");
 
   for (let i = 0; i < urls_img.length; i++) {
     loadImage(urls_img[i], (img) => {
@@ -81,10 +79,10 @@ function setup() {
 
   // cadena: synths → filtro → compresor → salida
   filterLP = new p5.LowPass();
-  synth.disconnect();         synth.connect(filterLP);
-  synthBgSine.disconnect();   synthBgSine.connect(filterLP);
+  synth.disconnect(); synth.connect(filterLP);
+  synthBgSine.disconnect(); synthBgSine.connect(filterLP);
   synthBgTriangle.disconnect(); synthBgTriangle.connect(filterLP);
-  synthBgSaw.disconnect();    synthBgSaw.connect(filterLP);
+  synthBgSaw.disconnect(); synthBgSaw.connect(filterLP);
   filterLP.disconnect();
   filterLP.connect(masterCompressor);
 
@@ -189,7 +187,7 @@ function draw() {
       let sparkRelease = map(mouseY, 0, height, 0.12, 1.2, true);
       synth.setADSR(0.01, 0.12, 0.3, sparkRelease);
 
-      let bgAttack  = map(mouseY, 0, height, 0.08, 0.6, true);
+      let bgAttack = map(mouseY, 0, height, 0.08, 0.6, true);
       let bgRelease = map(mouseY, 0, height, 0.25, 2.5, true);
       synthBgSine.setADSR(bgAttack, 0.4, 0.6, bgRelease);
       synthBgTriangle.setADSR(bgAttack, 0.4, 0.6, bgRelease);
@@ -355,11 +353,11 @@ function mousePressed() {
   }
 }
 
-function toggleSparks()   { caSparksActive = !caSparksActive; actualizarUI(); }
-function toggleMemory()   { modoMemoria    = !modoMemoria;    actualizarUI(); }
+function toggleSparks() { caSparksActive = !caSparksActive; actualizarUI(); }
+function toggleMemory() { modoMemoria = !modoMemoria; actualizarUI(); }
 function togglePlayhead() { mostrarPlayhead = !mostrarPlayhead; actualizarUI(); }
 function toggleFullscreen() { fullscreen(!fullscreen()); }
-function guardarCaptura() { saveCanvas("obra-interactiva", "png"); }
+function guardarCaptura() { saveCanvas("vibrante", "png"); }
 
 function resetMemory() {
   for (let fila of filas)
@@ -393,9 +391,9 @@ function toggleDesc() {
 }
 
 function actualizarUI() {
-  let btnAudio    = document.getElementById("btn-audio");
-  let btnSparks   = document.getElementById("btn-sparks");
-  let btnMemory   = document.getElementById("btn-memory");
+  let btnAudio = document.getElementById("btn-audio");
+  let btnSparks = document.getElementById("btn-sparks");
+  let btnMemory = document.getElementById("btn-memory");
   let btnPlayhead = document.getElementById("btn-playhead");
 
   function led(btn, estado) {
@@ -403,13 +401,13 @@ function actualizarUI() {
     let ind = btn.querySelector(".indicator");
     btn.classList.toggle("active", estado);
     if (ind) {
-      ind.style.background  = estado ? "#50fa7b" : "#ff5555";
-      ind.style.boxShadow   = estado ? "0 0 8px rgba(80,250,123,0.8)" : "0 0 8px rgba(255,85,85,0.8)";
+      ind.style.background = estado ? "#50fa7b" : "#ff5555";
+      ind.style.boxShadow = estado ? "0 0 8px rgba(80,250,123,0.8)" : "0 0 8px rgba(255,85,85,0.8)";
     }
   }
 
-  led(btnAudio,    audioIniciado);
-  led(btnSparks,   caSparksActive);
-  led(btnMemory,   modoMemoria);
+  led(btnAudio, audioIniciado);
+  led(btnSparks, caSparksActive);
+  led(btnMemory, modoMemoria);
   led(btnPlayhead, mostrarPlayhead);
 }

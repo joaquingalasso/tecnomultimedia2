@@ -56,15 +56,15 @@ class Columna {
 
     // cantidad de celdas según resolución de pantalla
     let minCeldas, maxCeldas;
-    if (width < 600)       { minCeldas = 3; maxCeldas = 6; }
+    if (width < 600) { minCeldas = 3; maxCeldas = 6; }
     else if (width < 1200) { minCeldas = 5; maxCeldas = 9; }
-    else                   { minCeldas = 8; maxCeldas = 14; }
+    else { minCeldas = 8; maxCeldas = 14; }
     this.numCeldas = int(random(minCeldas, maxCeldas + 1));
 
     let colorRandom = colorPaleta.darUnColor();
-    this.tinte     = colorRandom.hue;
+    this.tinte = colorRandom.hue;
     this.saturacion = colorRandom.saturation;
-    this.brillo    = colorRandom.brightness;
+    this.brillo = colorRandom.brightness;
 
     this.celdas = [];
 
@@ -198,8 +198,8 @@ class Celda {
       pop();
     } else {
       let pitchSimulado = map(sin(frameCount * 0.04 + this.x * 0.002), -1, 1, 0.3, 1.0);
-      let satBase  = map(sin((frameCount * 0.1 + this.x / this.ancho) * 0.4), -1, 3, 0, this.saturacion);
-      let satActual   = lerp(satBase, 0, this.estadoCA);
+      let satBase = map(sin((frameCount * 0.1 + this.x / this.ancho) * 0.4), -1, 3, 0, this.saturacion);
+      let satActual = lerp(satBase, 0, this.estadoCA);
       let brilloActual = lerp(pitchSimulado * this.brilloOriginal, 100, this.estadoCA);
 
       fill(color(tinteActual, satActual, brilloActual));
