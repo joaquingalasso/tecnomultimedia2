@@ -10,14 +10,61 @@
 
     <script src="libraries/p5.min.js"></script>
     <script src="libraries/p5.sound.min.js"></script>
-    <script src="libraries/ml5.min.js"></script>
 
   </head>
 
   <body>
+    <!-- Panel de Control Interactivo - Esquina inferior derecha -->
+    <div id="control-panel">
+
+      <button id="btn-audio" onclick="toggleAudio()" title="Activar audio (A)">
+        <span>Audio</span>
+        <div class="indicator"></div>
+        <kbd>A</kbd>
+      </button>
+
+      <button id="btn-sparks" onclick="toggleSparks()" title="Chispas del autómata celular (S)">
+        <span>Chispas</span>
+        <div class="indicator"></div>
+        <kbd>S</kbd>
+      </button>
+
+      <button id="btn-memory" onclick="toggleMemory()" title="Modo memoria (M)">
+        <span>Memoria</span>
+        <div class="indicator"></div>
+        <kbd>M</kbd>
+      </button>
+
+      <button id="btn-playhead" onclick="togglePlayhead()" title="Mostrar barrido (B)">
+        <span>Barrido</span>
+        <div class="indicator"></div>
+        <kbd>B</kbd>
+      </button>
+
+      <button id="btn-reset" onclick="resetMemory()" title="Reiniciar rastro (R)">
+        <span class="icon">⟳</span>
+        <kbd>R</kbd>
+      </button>
+
+      <button id="btn-capture" onclick="guardarCaptura()" title="Guardar PNG (G)">
+        <span class="icon">💾</span>
+        <kbd>G</kbd>
+      </button>
+
+      <button id="btn-fullscreen" onclick="toggleFullscreen()" title="Pantalla completa (F)">
+        <span class="icon">⛶</span>
+        <kbd>F</kbd>
+      </button>
+
+      <button id="btn-toggle-desc" onclick="toggleDesc()" title="Ocultar panel (H)">
+        <span class="icon">×</span>
+        <kbd>H</kbd>
+      </button>
+
+    </div>
+
     <script src="sketch.js"></script>
     <script src="objetos.js"></script>
-    <script src="gestor.js"></script>
     <script src="paleta.js"></script>
   </body>
 </html>
